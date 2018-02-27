@@ -11,8 +11,12 @@ config_version=3
 [application]
 
 config/name="DodgeClone"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/TitleScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://src/Globals.gd"
 
 [debug]
 
