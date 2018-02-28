@@ -28,6 +28,7 @@ window/size/width=480
 window/size/height=720
 window/size/resizable=false
 window/handheld/orientation="portrait"
+window/handheld/emulate_touchscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-
+[ext_resource path="res://art/icon.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -28,7 +28,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -48,6 +48,7 @@ margin_top = 35.0
 margin_right = 22.0
 margin_bottom = 113.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -70,6 +71,7 @@ margin_top = -79.5
 margin_right = 214.5
 margin_bottom = 79.5
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -89,11 +91,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -90.0
-margin_top = -131.0
-margin_right = 90.0
-margin_bottom = -47.0
+margin_left = -85.0
+margin_top = -242.0
+margin_right = 95.0
+margin_bottom = -158.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -115,6 +118,62 @@ process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
+
+[node name="Left" type="TouchScreenButton" parent="." index="4"]
+
+position = Vector2( 279, 588 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_left"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Right" type="TouchScreenButton" parent="." index="5"]
+
+position = Vector2( 404, 587 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_right"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Up" type="TouchScreenButton" parent="." index="6"]
+
+position = Vector2( 342, 524 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_up"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Down" type="TouchScreenButton" parent="." index="7"]
+
+position = Vector2( 344, 651 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_down"
+visibility_mode = 0
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 
