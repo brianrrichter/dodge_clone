@@ -70,6 +70,8 @@ func addScore(name, score):
 	var newScore = {"name": name, "score": score}
 	scores.append(newScore)
 	
+	scores.sort_custom(MyCustomSorter, "sort")
+	
 	if scores.size() > 10:
 		scores.remove(0)
 	
@@ -80,3 +82,12 @@ func addScore(name, score):
 	saveGame.close()
 	
 	print('addScore')
+
+class MyCustomSorter:
+	static func sort(a, b):
+		if a["score"] > b["score"]:
+			return true
+		return false
+	
+	
+	
