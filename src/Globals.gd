@@ -73,7 +73,7 @@ func addScore(name, score):
 	scores.sort_custom(MyCustomSorter, "sort")
 	
 	if scores.size() > 10:
-		scores.remove(0)
+		scores.remove(scores.size() -1)
 	
 #	print(OS.get_user_data_dir())
 	var saveGame = File.new()

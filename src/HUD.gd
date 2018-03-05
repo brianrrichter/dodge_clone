@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 signal start_game
+signal name_informed
+
+var _score
 
 func show_message(text):
 	$MessageLabel.text = text
@@ -38,4 +41,22 @@ func _on_MessageTimer_timeout():
 
 func _on_ScoreButton_pressed():
 	get_node("/root/Globals").setScene("res://scenes/ScoreScene.tscn")
+
+
+
+func _on_TestButton_pressed():
+	$ScoreDialog.popup()
+
+func showNameDialog(score):
+	_score = score
+	$ScoreDialog.setScore(score)
+	$ScoreDialog.popup()
+
+
+func _on_ScoreDialog_confirmed():
+	print(str("nome: ", $ScoreDialog.getName()))
+	get_node("/root/Globals").addScore($ScoreDialog.getName(), _score)
+	emit_signal("name_informed")
+
+
 

@@ -6,7 +6,8 @@
 
 ## Improvements
 
-* [--] score screen
+* [ok] score screen
+  * requires better organization on code
 * [ok] opening screen
 * [ok] touch screen controls
   * very basic directional

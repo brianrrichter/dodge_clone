@@ -5,7 +5,6 @@ var score
 
 func _ready():
 	randomize()
-	$LineEdit.hide()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -18,12 +17,11 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
-	$LineEdit.show()
+	$HUD.showNameDialog(score)
 	
 	
 
 func new_game():
-	$LineEdit.hide()
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -59,10 +57,6 @@ func _on_MobTimer_timeout():
 	mob.set_linear_velocity(Vector2(rand_range(mob.MIN_SPEED, mob.MAX_SPEED),  0).rotated(direction))
 
 
-func _on_LineEdit_text_changed(new_text):
-	if new_text.length() == 3:
-		get_node("/root/Globals").addScore(new_text, score)
-		$LineEdit.clear()
-		$LineEdit.hide()
-		$HUD.show_buttons()
-		
+
+func _on_HUD_name_informed():
+	$HUD.show_buttons()

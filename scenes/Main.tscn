@@ -14,7 +14,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0 )
 }
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 
 script = ExtResource( 1 )
 Mob = ExtResource( 2 )
@@ -99,30 +99,6 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="LineEdit" type="LineEdit" parent="." index="10"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 24.0
-margin_top = 23.0
-margin_right = 82.0
-margin_bottom = 47.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
-focus_mode = 2
-context_menu_enabled = true
-placeholder_alpha = 0.6
-caret_blink = false
-caret_blink_speed = 0.65
-caret_position = 0
-
 [connection signal="hit" from="Player" to="." method="game_over"]
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
@@ -131,8 +107,8 @@ caret_position = 0
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 
-[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="name_informed" from="HUD" to="." method="_on_HUD_name_informed"]
 
-[connection signal="text_changed" from="LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 
 
