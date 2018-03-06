@@ -228,8 +228,10 @@ text = "Test"
 flat = false
 align = 1
 
-[node name="ScoreDialog" type="ConfirmationDialog" parent="." index="10"]
+[node name="ScoreDialog" type="AcceptDialog" parent="." index="10"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -244,20 +246,22 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = true
-window_title = "Please Confirm..."
+window_title = "Score"
 resizable = false
 dialog_hide_on_ok = true
 script = ExtResource( 4 )
 _sections_unfolded = [ "Popup" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScoreDialog" index="3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreDialog" index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 52.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -272,7 +276,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 101.0
+margin_right = 184.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -291,7 +295,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
-margin_right = 101.0
+margin_right = 184.0
 margin_bottom = 42.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -345,6 +349,31 @@ caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
 
+[node name="SoundCheckButton" type="CheckButton" parent="." index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 394.0
+margin_top = 8.0
+margin_right = 470.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 
 [connection signal="pressed" from="ScoreButton" to="." method="_on_ScoreButton_pressed"]
@@ -354,5 +383,7 @@ caret_position = 0
 [connection signal="pressed" from="TestButton" to="." method="_on_TestButton_pressed"]
 
 [connection signal="confirmed" from="ScoreDialog" to="." method="_on_ScoreDialog_confirmed"]
+
+[connection signal="toggled" from="SoundCheckButton" to="." method="_on_SoundCheckButton_toggled"]
 
 

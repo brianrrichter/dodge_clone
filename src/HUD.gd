@@ -59,4 +59,5 @@ func _on_ScoreDialog_confirmed():
 	emit_signal("name_informed")
 
 
-
+func _on_SoundCheckButton_toggled(isOn):
+	get_node("/root/Globals").muteSound(!isOn)

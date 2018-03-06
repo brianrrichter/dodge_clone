@@ -1,4 +1,4 @@
-extends ConfirmationDialog
+extends AcceptDialog
 
 # class member variables go here, for example:
 # var a = 2

@@ -83,6 +83,14 @@ func addScore(name, score):
 	
 	print('addScore')
 
+func muteSound(mute):
+#	print(str("buzz count: ",  AudioServer.get_bus_count()))
+	for i in AudioServer.get_bus_count():
+		AudioServer.set_bus_mute(i, mute)
+
+
+# Auxiliary classes
+
 class MyCustomSorter:
 	static func sort(a, b):
 		if a["score"] > b["score"]:
