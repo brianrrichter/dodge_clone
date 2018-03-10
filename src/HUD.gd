@@ -13,7 +13,8 @@ func show_message(text):
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	pass
+	if (get_node("/root/Globals").isSoundMuted()):
+		$SoundCheckButton.set_pressed(false)
 
 func show_game_over():
 	show_message("Game Over")

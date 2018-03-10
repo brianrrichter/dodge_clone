@@ -88,6 +88,11 @@ func muteSound(mute):
 	for i in AudioServer.get_bus_count():
 		AudioServer.set_bus_mute(i, mute)
 
+func isSoundMuted():
+	for i in AudioServer.get_bus_count():
+		return AudioServer.is_bus_mute(i)
+	return false;
+
 
 # Auxiliary classes
 
