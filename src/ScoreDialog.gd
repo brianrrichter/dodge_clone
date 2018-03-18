@@ -12,5 +12,8 @@ func _ready():
 func getName():
 	return $VBoxContainer/HBoxContainer2/LineEdit.text
 	
+func clear():
+	$VBoxContainer/HBoxContainer2/LineEdit.clear()
+	
 func setScore(score):
 	$VBoxContainer/ScoreLabel.text = str("Você fez ", score, " pontos!")

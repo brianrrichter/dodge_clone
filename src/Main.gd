@@ -2,6 +2,7 @@ extends Node
 
 export (PackedScene) var Mob
 var score
+const _Mob = preload("Mob.gd")
 
 func _ready():
 	randomize()
@@ -17,11 +18,20 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
-	$HUD.showNameDialog(score)
+	if get_node("/root/Globals").isScoreGoodEnough(score):
+		$HUD.showNameDialog(score)
+	else:
+		$HUD.show_buttons()
 	
 	
 
 func new_game():
+	#remover inimigos
+	for n in get_children():
+		print(n.get_class())
+		if (n is _Mob):
+			n.queue_free()
+	
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()

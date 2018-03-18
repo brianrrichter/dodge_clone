@@ -15,6 +15,8 @@ func _ready():
 	# Initialization here
 	if (get_node("/root/Globals").isSoundMuted()):
 		$SoundCheckButton.set_pressed(false)
+	
+	$ScoreDialog.get_close_button().hide()
 
 func show_game_over():
 	show_message("Game Over")
@@ -57,6 +59,7 @@ func showNameDialog(score):
 func _on_ScoreDialog_confirmed():
 	print(str("nome: ", $ScoreDialog.getName()))
 	get_node("/root/Globals").addScore($ScoreDialog.getName(), _score)
+	$ScoreDialog.clear()
 	emit_signal("name_informed")
 
 

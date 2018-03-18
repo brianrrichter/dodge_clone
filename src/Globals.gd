@@ -61,7 +61,11 @@ func getScore():
 	print('hhhhhhh')
 	return p
 	
-	
+func isScoreGoodEnough(score):
+	var scoreList = getScore()
+	if !scoreList.empty():
+		return score > scoreList.back()["score"];
+	return true;
 	
 func addScore(name, score):
 	var scores = getScore()
