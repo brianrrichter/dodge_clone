@@ -1,8 +1,12 @@
 extends Node
 
 export (PackedScene) var Mob
+export (PackedScene) var BlinkingDot
 var score
 const _Mob = preload("Mob.gd")
+
+var delayedMob
+var blinkingDot
 
 func _ready():
 	randomize()
@@ -13,6 +17,13 @@ func _ready():
 #	pass
 
 func game_over():
+	if (delayedMob != null):
+		delayedMob.queue_free()
+		delayedMob = null
+	if (blinkingDot != null):
+		blinkingDot.queue_free()
+		blinkingDot = null
+	
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -28,7 +39,7 @@ func game_over():
 func new_game():
 	#remover inimigos
 	for n in get_children():
-		print(n.get_class())
+#		print(n.get_class())
 		if (n is _Mob):
 			n.queue_free()
 	
@@ -51,11 +62,15 @@ func _on_ScoreTimer_timeout():
 
 
 func _on_MobTimer_timeout():
+	if  (delayedMob != null):
+		add_child(delayedMob)
+	
 	# choosea random location on the Path2D
 	$MobPath/MobSpawnLocation.set_offset(randi())
 	# create a Mob instance and add it to the scene
 	var mob = Mob.instance()
-	add_child(mob)
+#	add_child(mob)
+	delayedMob = mob
 	# set the mob's direction perpendicular to the path direction
 	var direction = $MobPath/MobSpawnLocation.rotation + PI/2
 	# set the mob's position to the random location
@@ -66,6 +81,11 @@ func _on_MobTimer_timeout():
 	# choose the velocity
 	mob.set_linear_velocity(Vector2(rand_range(mob.MIN_SPEED, mob.MAX_SPEED),  0).rotated(direction))
 
+	if blinkingDot == null:
+		blinkingDot = BlinkingDot.instance()
+		add_child(blinkingDot)
+		
+	blinkingDot.position = mob.position
 
 
 func _on_HUD_name_informed():
