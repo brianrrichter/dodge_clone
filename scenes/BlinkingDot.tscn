@@ -5,7 +5,7 @@
 [ext_resource path="res://art/blinkingDot_3.png" type="Texture" id=3]
 [ext_resource path="res://art/BlinkingDot_4.png" type="Texture" id=4]
 [ext_resource path="res://art/BlinkingDot_5.png" type="Texture" id=5]
-[ext_resource path="res://scenes/BlinkingDot.gd" type="Script" id=6]
+[ext_resource path="res://src/BlinkingDot.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -23,6 +23,7 @@ scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "blinking"
 frame = 1
+offset = Vector2( -20, -15 )
 script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {

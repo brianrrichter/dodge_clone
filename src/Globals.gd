@@ -46,9 +46,9 @@ func getScore():
 	
 	var fileContent = saveGame.get_as_text()
 	
-	print('eeeeeeeee')
+#	print('eeeeeeeee')
 	var p = JSON.parse(fileContent).result
-	print(str('type: ', typeof(p)))
+#	print(str('type: ', typeof(p)))
 	if typeof(p) == TYPE_ARRAY:
 		return p
 #		var d = {"name": "john", "score": 22}
@@ -58,7 +58,7 @@ func getScore():
 	else:
 		print("unexpected results")
 		p = []
-	print('hhhhhhh')
+#	print('hhhhhhh')
 	return p
 	
 func isScoreGoodEnough(score):
@@ -85,7 +85,7 @@ func addScore(name, score):
 	saveGame.store_line(to_json(scores))
 	saveGame.close()
 	
-	print('addScore')
+#	print('addScore')
 
 func muteSound(mute):
 #	print(str("buzz count: ",  AudioServer.get_bus_count()))

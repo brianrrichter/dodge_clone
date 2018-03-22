@@ -84,7 +84,9 @@ func _on_MobTimer_timeout():
 	if blinkingDot == null:
 		blinkingDot = BlinkingDot.instance()
 		add_child(blinkingDot)
-		
+	
+	# + PI/2 é para compensar a sprite do mob que é de lado
+	blinkingDot.rotation = mob.rotation + PI/2
 	blinkingDot.position = mob.position
 
 

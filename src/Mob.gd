@@ -6,7 +6,7 @@ var mob_types = ["walk", "swim", "fly"]
 
 func _ready():
 	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
-	pass
+	$AnimatedSprite.play()
 
 
 #func _process(delta):
