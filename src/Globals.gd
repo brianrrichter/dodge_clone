@@ -1,9 +1,26 @@
 extends Node
 
 var currentScene = null
+var preferences = null
+const SAVE_FILE = "user://savegame.save"
+const PREFERENCES_FILE = "user://preferences.save"
 
 func _ready():
+	get_tree().set_auto_accept_quit(false)
+	
+	preferences = getPreferences()
+	
+	muteSound(!preferences["sound_enabled"])
+
+	
 	currentScene = get_tree().get_root().get_child(get_tree().get_root().get_child_count() - 1)
+	
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		preferences["sound_enabled"] = !isSoundMuted()
+		savePreferences()
+		get_tree().quit()
+
 
 func setScene(scene):
 	currentScene.queue_free()
@@ -11,40 +28,68 @@ func setScene(scene):
 	currentScene = s.instance()
 	get_tree().get_root().add_child(currentScene)
 
-func saveGame():
-	print('saveGame - init')
-	print(OS.get_user_data_dir())
-	var saveGame = File.new()
-	saveGame.open("user://savegame.save", File.WRITE)
-	saveGame.store_line('["hello", "world", "!"]')
-	saveGame.close()
-	print('saveGame - end')
+#func saveGame():
+#	print('saveGame - init')
+#	print(OS.get_user_data_dir())
+#	var saveGame = File.new()
+#	saveGame.open(SAVE_FILE, File.WRITE)
+#	saveGame.store_line('["hello", "world", "!"]')
+#	saveGame.close()
+#	print('saveGame - end')
 	
-func loadGame():
-	print('loadGame - init')
-	var saveGame = File.new()
-	if not saveGame.file_exists("user://savegame.save"):
-		return
+#func loadGame():
+#	print('loadGame - init')
+#	var saveGame = File.new()
+#	if not saveGame.file_exists(SAVE_FILE):
+#		return
+#
+#	saveGame.open(SAVE_FILE, File.READ)
+#
+#	while not saveGame.eof_reached():
+##		print('loadGame - while')
+#		print (str("line read: ", saveGame.get_line()))
+##	print (saveGame.get_line());
+#
+#	saveGame.close()
+#
+#	print('loadGame - end')
+
+func getPreferences():
+
+	var file = File.new()
+#	if not file.file_exists(PREFERENCES_FILE):
+#		return
 	
-	saveGame.open("user://savegame.save", File.READ)
+	file.open(PREFERENCES_FILE, File.READ)
+	var fileContent = file.get_as_text()
+	file.close()
 	
-	while not saveGame.eof_reached():
-#		print('loadGame - while')
-		print (str("line read: ", saveGame.get_line()))
-#	print (saveGame.get_line());
-		
-	saveGame.close()
 	
-	print('loadGame - end')
+	var p = JSON.parse(fileContent).result
+	print(str('type: ', typeof(p)))
+	if typeof(p) == TYPE_DICTIONARY:
+		return p
+	else:
+		print("unexpected results")
+		p = {"sound_enabled": true}
+	return p
+
+func savePreferences():
+	var file = File.new()
+	file.open(PREFERENCES_FILE, File.WRITE)
+	file.store_line(to_json(preferences))
+	file.close()
 
 func getScore():
 	var saveGame = File.new()
-	if not saveGame.file_exists("user://savegame.save"):
-		return
-	
-	saveGame.open("user://savegame.save", File.READ)
+#	if not saveGame.file_exists(SAVE_FILE):
+#		return
+#
+	saveGame.open(SAVE_FILE, File.READ)
 	
 	var fileContent = saveGame.get_as_text()
+	
+	saveGame.close()
 	
 #	print('eeeeeeeee')
 	var p = JSON.parse(fileContent).result
@@ -81,7 +126,7 @@ func addScore(name, score):
 	
 #	print(OS.get_user_data_dir())
 	var saveGame = File.new()
-	saveGame.open("user://savegame.save", File.WRITE)
+	saveGame.open(SAVE_FILE, File.WRITE)
 	saveGame.store_line(to_json(scores))
 	saveGame.close()
 	
