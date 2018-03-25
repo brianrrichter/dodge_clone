@@ -2,8 +2,9 @@
 
 [ext_resource path="res://src/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://art/icon.png" type="Texture" id=3]
-[ext_resource path="res://src/ScoreDialog.gd" type="Script" id=4]
+[ext_resource path="res://fonts/font_title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://art/icon.png" type="Texture" id=4]
+[ext_resource path="res://src/ScoreDialog.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -21,15 +22,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=3]
-
-size = 64
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[node name="HUD" type="CanvasLayer" index="0"]
+[node name="HUD" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -92,10 +85,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -85.0
-margin_top = -242.0
-margin_right = 95.0
-margin_bottom = -158.0
+margin_left = -84.0
+margin_top = -243.0
+margin_right = 96.0
+margin_bottom = -159.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -103,7 +96,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -111,7 +104,7 @@ group = null
 text = "Start"
 flat = false
 align = 1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_fonts", "custom_styles" ]
 
 [node name="ScoreButton" type="Button" parent="." index="3"]
 
@@ -129,7 +122,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -149,7 +142,7 @@ autostart = false
 [node name="Left" type="TouchScreenButton" parent="." index="5"]
 
 position = Vector2( 279, 588 )
-normal = ExtResource( 3 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -163,7 +156,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Right" type="TouchScreenButton" parent="." index="6"]
 
 position = Vector2( 404, 587 )
-normal = ExtResource( 3 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -177,7 +170,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Up" type="TouchScreenButton" parent="." index="7"]
 
 position = Vector2( 342, 524 )
-normal = ExtResource( 3 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -191,7 +184,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Down" type="TouchScreenButton" parent="." index="8"]
 
 position = Vector2( 344, 651 )
-normal = ExtResource( 3 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -250,7 +243,7 @@ popup_exclusive = true
 window_title = "Score"
 resizable = false
 dialog_hide_on_ok = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Anchor", "Dialog", "Margin", "Popup" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScoreDialog" index="3"]
@@ -344,6 +337,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 1
 size_flags_horizontal = 1
 size_flags_vertical = 1
+max_length = 10
 focus_mode = 2
 context_menu_enabled = true
 placeholder_alpha = 0.6

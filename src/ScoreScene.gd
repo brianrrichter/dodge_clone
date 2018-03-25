@@ -11,7 +11,10 @@ func _ready():
 
 	var text = ""
 	for s in scoreList:
-		text += str("\n", s["name"], "...........", s["score"])
+		text += str("\n"
+			,(s["name"]) if !s["name"].empty() else "---"
+			," ........... "
+			,str(s["score"]).pad_zeros(3))
 #		print(s["name"]) # prints 'hello'
 #		print(s["score"])
 
