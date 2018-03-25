@@ -5,9 +5,14 @@ extends AcceptDialog
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	connect("visibility_changed", self, "on_visibility_changed")
+
+	register_text_enter($VBoxContainer/HBoxContainer2/LineEdit)
+	
 	pass
+
+func on_visibility_changed():
+	$VBoxContainer/HBoxContainer2/LineEdit.grab_focus()
 
 func getName():
 	return $VBoxContainer/HBoxContainer2/LineEdit.text

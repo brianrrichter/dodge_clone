@@ -108,7 +108,7 @@ func getScore():
 	
 func isScoreGoodEnough(score):
 	var scoreList = getScore()
-	if !scoreList.empty():
+	if !scoreList.empty() && scoreList.size() >= 10:
 		return score > scoreList.back()["score"];
 	return true;
 	
