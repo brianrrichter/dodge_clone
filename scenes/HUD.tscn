@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/HUD.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/font_title.tres" type="DynamicFont" id=3]
-[ext_resource path="res://art/icon.png" type="Texture" id=4]
-[ext_resource path="res://src/ScoreDialog.gd" type="Script" id=5]
+[ext_resource path="res://art/arrow_left.png" type="Texture" id=4]
+[ext_resource path="res://art/arrow_right.png" type="Texture" id=5]
+[ext_resource path="res://art/arrow_up.png" type="Texture" id=6]
+[ext_resource path="res://art/arrow_down.png" type="Texture" id=7]
+[ext_resource path="res://src/ScoreDialog.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -22,7 +25,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -142,6 +145,7 @@ autostart = false
 [node name="Left" type="TouchScreenButton" parent="." index="5"]
 
 position = Vector2( 279, 588 )
+scale = Vector2( 0.4, 0.4 )
 normal = ExtResource( 4 )
 pressed = null
 bitmask = null
@@ -156,7 +160,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="Right" type="TouchScreenButton" parent="." index="6"]
 
 position = Vector2( 404, 587 )
-normal = ExtResource( 4 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 5 )
 pressed = null
 bitmask = null
 shape = null
@@ -170,7 +175,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="Up" type="TouchScreenButton" parent="." index="7"]
 
 position = Vector2( 342, 524 )
-normal = ExtResource( 4 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 6 )
 pressed = null
 bitmask = null
 shape = null
@@ -179,12 +185,13 @@ shape_visible = true
 passby_press = false
 action = "ui_up"
 visibility_mode = 0
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
 
 [node name="Down" type="TouchScreenButton" parent="." index="8"]
 
 position = Vector2( 344, 651 )
-normal = ExtResource( 4 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 7 )
 pressed = null
 bitmask = null
 shape = null
@@ -243,7 +250,7 @@ popup_exclusive = true
 window_title = "Score"
 resizable = false
 dialog_hide_on_ok = true
-script = ExtResource( 5 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Anchor", "Dialog", "Margin", "Popup" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScoreDialog" index="3"]
