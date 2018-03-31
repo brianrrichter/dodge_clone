@@ -31,8 +31,8 @@ func game_over():
 	$DeathSound.play()
 	if get_node("/root/Globals").isScoreGoodEnough(score):
 		$HUD.showNameDialog(score)
-	else:
-		$HUD.show_buttons()
+#	else:
+#		$HUD.show_buttons()
 	
 	
 
@@ -91,4 +91,5 @@ func _on_MobTimer_timeout():
 
 
 func _on_HUD_name_informed():
-	$HUD.show_buttons()
+#	$HUD.show_buttons()
+	pass

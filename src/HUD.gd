@@ -25,6 +25,7 @@ func show_game_over():
 #	$ScoreButton.show()
 	$MessageLabel.text = "Dodge the\nCreeps!"
 	$MessageLabel.show()
+	show_buttons()
 	
 func show_buttons():
 	$StartButton.show()
