@@ -20,6 +20,9 @@ func _notification(what):
 		preferences["sound_enabled"] = !isSoundMuted()
 		savePreferences()
 		get_tree().quit()
+	if  what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST: #android
+		preferences["sound_enabled"] = !isSoundMuted()
+		savePreferences()
 
 
 func setScene(scene):
